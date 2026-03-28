@@ -1,28 +1,43 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useReducer, useEffect, ReactNode, Dispatch } from 'react';
+import { Todo, TodoAction } from '../types/todo.types';
+import { todoReducer } from '../reducers/todoReducer';
 
-interface ThemeContextType {
-  theme: 'light' | 'dark';
-  setTheme: (t: 'light' | 'dark') => void;
+interface TodoContextType {
+  state: {
+    todos: Todo[];
+  };
+  dispatch: Dispatch<TodoAction>;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+const initTodos = (): Todo[] => {
+  const saved = localStorage.getItem('todos');
+  if (saved) {
+    return JSON.parse(saved).map((t: any) => ({ ...t, createdAt: new Date(t.createdAt) }));
+  }
+  return [];
+};
+
+export function TodoProvider({ children }: { children: ReactNode }) {
+  const [todos, dispatch] = useReducer(todoReducer, [], initTodos);
+
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <TodoContext.Provider value={{ state: { todos }, dispatch }}>
       {children}
-    </ThemeContext.Provider>
+    </TodoContext.Provider>
   );
 }
 
-export function useTheme() {
-  const context = useContext(ThemeContext);
-  
+export function useTodoContext() {
+  const context = useContext(TodoContext);
   if (context === undefined) {
-    throw new Error('useTheme musi być użyty wewnątrz ThemeProvider');
+    throw new Error('useTodoContext musi być użyty wewnątrz TodoProvider');
   }
-  
   return context;
 }

@@ -1,33 +1,43 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Box, TextField, Button, Typography } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 
 interface AddTodoFormProps {
-  onAdd: (title: string) => void;
+  onAdd: (text: string) => void;
 }
 
+// Używamy zwykłego export (bez default), żeby pasowało do Twojego App.tsx
 export function AddTodoForm({ onAdd }: AddTodoFormProps) {
-  const [inputValue, setInputValue] = useState<string>('');
+  const [text, setText] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-
-    const trimmedValue = inputValue.trim();
-    
-    if (trimmedValue !== '') {
-      onAdd(trimmedValue); 
-      setInputValue('');  
-    }
+  const handleSubmit = () => {
+    if (!text.trim()) return;
+    onAdd(text.trim());
+    setText('');
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: '20px', display: 'flex', gap: '10px' }}>
-      <input 
-        type="text"
-        value={inputValue} 
-        onChange={e => setInputValue(e.target.value)} 
-        placeholder="Co masz do zrobienia?"
-      />
-      <button type='submit'>Dodaj</button>
-    </form>
+    <Box sx={{ mb: 3 }}>
+      <Typography variant='h6' sx={{ mb: 1 }}>
+        Dodaj nowe zadanie
+      </Typography>
+      <Box sx={{ display: 'flex', gap: 1 }}>
+        <TextField
+          fullWidth
+          placeholder='Wpisz treść zadania...'
+          value={text}
+          onChange={e => setText(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && handleSubmit()}
+        />
+        <Button
+          variant='contained'
+          startIcon={<AddIcon />}
+          onClick={handleSubmit}
+          disabled={!text.trim()}
+        >
+          Dodaj
+        </Button>
+      </Box>
+    </Box>
   );
 }
