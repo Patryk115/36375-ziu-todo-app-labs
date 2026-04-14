@@ -19,22 +19,24 @@ export default function TodoInputTailwind({ onAdd }: TodoInputProps) {
         Dodaj nowe zadanie
       </h2>
       <div className='flex gap-2'>
-        <input
-          type='text'
-          placeholder='Wpisz treść zadania...'
-          value={text}
-          onChange={e => setText(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && handleSubmit()}
-          className='flex-1 px-4 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent placeholder:text-gray-400'
-        />
-        <button
-          onClick={handleSubmit}
-          disabled={!text.trim()}
-          className='px-5 py-2 text-sm font-semibold text-white bg-brand-500 rounded-lg hover:bg-brand-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed'
-        >
-          Dodaj
-        </button>
-      </div>
+  <input
+    type='text'
+    placeholder='Wpisz treść zadania...'
+    value={text}
+    onChange={e => setText(e.target.value)}
+    onKeyDown={e => e.key === 'Enter' && handleSubmit()}
+    // Zmiana: py-3 zamiast py-2 dla lepszego Touch Target
+    className='flex-1 px-4 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent placeholder:text-gray-400'
+  />
+  <button
+    onClick={handleSubmit}
+    disabled={!text.trim()}
+    // Zmiana: py-3 i min-w-[80px] dla lepszego Touch Target
+    className='px-5 py-3 min-w-[80px] text-sm font-semibold text-white bg-brand-500 rounded-lg hover:bg-brand-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed'
+  >
+    Dodaj
+  </button>
+</div>
     </div>
   );
 }

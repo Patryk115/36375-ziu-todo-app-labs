@@ -11,7 +11,7 @@ interface StatsCardProps {
 
 export default function StatsCard({ title, value, icon: Icon, color, bgColor }: StatsCardProps) {
   return (
-    <Card>
+    <Card sx={{ height: '100%' }}>
       <CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <Box>
@@ -22,7 +22,19 @@ export default function StatsCard({ title, value, icon: Icon, color, bgColor }: 
               {value}
             </Typography>
           </Box>
-          <Avatar sx={{ bgcolor: bgColor, color, width: 48, height: 48 }}>
+          <Avatar 
+            sx={{ 
+              bgcolor: bgColor, 
+              color, 
+              width: 48, 
+              // Ustawienie wysokości na auto pozwala właściwości aspect-ratio
+              // na poprawne zdefiniowanie proporcji elementu.
+              height: 'auto', 
+              aspectRatio: '1 / 1', 
+              // objectFit zapewnia, że zawartość nie zostanie zniekształcona
+              objectFit: 'cover' 
+            }}
+          >
             <Icon />
           </Avatar>
         </Box>

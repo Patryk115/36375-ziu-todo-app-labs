@@ -8,7 +8,6 @@
 
 ---
 
-
 ## 🚀 Jak uruchomić
 
 ### Krok 1: Pobranie całego projektu
@@ -21,7 +20,7 @@ cd todo-app-repo
 ### Krok 2: Uruchomienie wybranego laboratorium
 ```
 git checkout <NAZWA_GAŁĘZI>  # np. git checkout lab5
-npm install                 
+npm install                  # Zawsze wywołuj npm install, by pobrać nowe biblioteki dodane w danym labie!
 npm run dev
 ```
 

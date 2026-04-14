@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ZADANIE DODATKOWE NA 5.0: Obsługa wydruku (@media print)
+  Zgodnie z wymaganiami punktu 6.5 instrukcji Lab 6.
+*/
+@media print {
+  /* Ukrywamy wszystkie elementy interfejsu, które są zbędne na papierze:
+     nawigację boczną, nagłówek, przyciski akcji oraz formularze.
+  */
+  header, 
+  nav, 
+  aside, 
+  button, 
+  input, 
+  .MuiDrawer-root,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Resetujemy tło i kolory dla oszczędności tonera i czytelności */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Rozciągamy główną treść na pełną szerokość strony A4 */
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* Stylizacja kart zadań na wydruku:
+     - Dodajemy obramowanie, aby karty były widoczne.
+     - Używamy break-inside: avoid, aby karta nie została przecięta 
+       pomiędzy dwiema stronami wydruku.
+  */
+  li, 
+  .MuiCard-root, 
+  .MuiPaper-root {
+    break-inside: avoid;
+    border: 1px solid #eeeeee !important;
+    box-shadow: none !important;
+    margin-bottom: 1.5rem !important;
+    page-break-inside: avoid;
+  }
+
+  /* Zwiększamy kontrast tytułów na wydruku */
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+}
