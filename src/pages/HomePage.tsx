@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useDebounce } from '../hooks/useDebounce';
 import { InfiniteMovieList } from '../components/InfiniteMovieList';
 import { MovieModal } from '../components/MovieModal';
+import { plausible } from '../analytics'; // <-- IMPORT ANALITYKI
 
 const pageVariants = {
   initial: { opacity: 0, x: -16 },
@@ -23,6 +24,14 @@ export function HomePage() {
           placeholder="Szukaj filmów (min. 2 znaki)..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onBlur={() => {
+            // Wysłanie zdarzenia analitycznego po wpisaniu tekstu i odkliknięciu
+            if (query.trim().length >= 2) {
+              // Zbierane dane: Fakt wystąpienia wyszukiwania. Nie zbieramy samej wpisanej treści, aby chronić prywatność (RODO).
+              // Uzasadnienie: Pozwala zmierzyć zaangażowanie w kluczową funkcję aplikacji bez profilowania.
+              plausible.trackEvent('Search Initiated');
+            }
+          }}
           className='search-input'
         />
       </div>

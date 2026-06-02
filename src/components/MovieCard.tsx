@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useFavorites } from '../hooks/useFavorites';
 import { useToast } from '../context/ToastContext';
 import type { Movie } from '../hooks/useFetchMovies';
+import { plausible } from '../analytics'; // <-- IMPORT ANALITYKI
 
 const IMG_BASE = 'https://image.tmdb.org/t/p/w500';
 
@@ -16,7 +17,6 @@ export function MovieCard({ movie, onClick }: Props) {
   const { addToast } = useToast();
   const [optimisticFav, setOptimisticFav] = useState<boolean | null>(null);
   
-  // Etap 6: Strategia dla dostępności – zdejmujemy animację w osi Y
   const shouldReduce = useReducedMotion();
 
   const displayedFav = optimisticFav ?? isFavorite(movie.id);
@@ -28,8 +28,16 @@ export function MovieCard({ movie, onClick }: Props) {
     try {
       await toggleFavorite(movie);
       setOptimisticFav(null);
-      // Wywołanie Toasta
+      
       addToast(isAdding ? `Dodano "${movie.title}" do ulubionych` : `Usunięto "${movie.title}" z ulubionych`);
+      
+      // Wysłanie zdarzenia analitycznego
+      // Zbierane dane: Tytuł filmu i rodzaj akcji (dodaj/usuń).
+      // Uzasadnienie: Identyfikuje najpopularniejsze treści w aplikacji bez łączenia ich z konkretnym ID użytkownika.
+      plausible.trackEvent(isAdding ? 'Favorite Added' : 'Favorite Removed', {
+        props: { movieTitle: movie.title }
+      });
+      
     } catch {
       setOptimisticFav(null);
       addToast('Wystąpił błąd');
