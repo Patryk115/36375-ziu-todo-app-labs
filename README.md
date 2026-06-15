@@ -7,7 +7,7 @@
 
 ## 🚀 Demo
 
-> **Link do demo:** **https://patryk115.github.io/36375-ziu-todo-app-labs/login**
+> **Link do demo:** https://patryk115.github.io/36375-ziu-todo-app-labs/#/login
 
 ---
 
