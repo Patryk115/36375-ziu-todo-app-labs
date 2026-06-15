@@ -34,7 +34,7 @@ function ThemedApp() {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/produty-todo-app">
+    <BrowserRouter basename="/36375-ziu-todo-app-labs">
       <ThemeContextProvider>
         <ThemedApp />
       </ThemeContextProvider>

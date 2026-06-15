@@ -7,8 +7,7 @@
 
 ## 🚀 Demo
 
-> **Link do demo:** [https://[twoj-nick].github.io/produty-todo-app/](https://[twoj-nick].github.io/produty-todo-app/)
-> *(Zastąp `[twoj-nick]` swoją nazwą użytkownika na GitHubie po udanym wdrożeniu)*
+> **Link do demo:** [https://patryk115.github.io/36375-ziu-todo-app-labs/](https://patryk115.github.io/36375-ziu-todo-app-labs/)
 
 ---
 
@@ -80,7 +79,7 @@ npm run deploy
 ```
 
 Powyższe polecenie zbuduje wersję produkcyjną i opublikuje ją na gałęzi `gh-pages`. Twoja aplikacja będzie po kilku minutach dostępna pod adresem:
-`https://[twoj-nick].github.io/produty-todo-app/`
+`https://patryk115.github.io/36375-ziu-todo-app-labs/`
 
 *(Uwaga: w ustawieniach repozytorium na GitHubie w zakładce **Pages** upewnij się, że źródło to gałąź `gh-pages`)*.
 

@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/produty-todo-app/', // Wymagane dla GitHub Pages
+  base: '/36375-ziu-todo-app-labs/', // Wymagane dla GitHub Pages
   plugins: [react()],
   server: {
     port: 3000,
