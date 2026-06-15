@@ -1,7 +1,7 @@
-# Produty — ToDo Task Manager 📋
+ToDo Task Manager
 
-> Projekt zaliczeniowy — Zaawansowane Interfejsy Użytkownika (ZIU)  
-> **Patryk Kindra** | Rok akademicki 2025/2026
+> Projekt zaliczeniowy — Zaawansowane Interfejsy Użytkownika  
+> **Patryk Kindra 36375** | Rok akademicki 2025/2026
 
 ---
 
@@ -13,7 +13,7 @@
 
 ## 📝 Opis projektu
 
-**Produty** to nowoczesna aplikacja webowa do zarządzania zadaniami (Task Manager / ToDo), zbudowana w React + TypeScript + Material UI. Pozwala użytkownikom organizować codzienne zadania w projekty, śledzić postępy i zwiększać produktywność.
+Nowoczesna aplikacja webowa do zarządzania zadaniami (Task Manager / ToDo), zbudowana w React + TypeScript + Material UI. Pozwala użytkownikom organizować codzienne zadania w projekty, śledzić postępy i zwiększać produktywność.
 
 ### Główne funkcje:
 - 🔐 Rejestracja i logowanie (wielokrokowy formularz z walidacją)
@@ -67,23 +67,6 @@ npm run dev
 # 4. Otwórz przeglądarkę
 # http://localhost:5173
 ```
-
-### Budowanie produkcji i Deployment (GitHub Pages)
-
-Aplikacja jest skonfigurowana do łatwego wdrożenia na GitHub Pages. Wystarczy uruchomić jedną komendę:
-
-```bash
-# Upewnij się, że wszystkie zmiany są zatwierdzone w repozytorium GitHub.
-# Następnie uruchom:
-npm run deploy
-```
-
-Powyższe polecenie zbuduje wersję produkcyjną i opublikuje ją na gałęzi `gh-pages`. Twoja aplikacja będzie po kilku minutach dostępna pod adresem:
-`https://patryk115.github.io/36375-ziu-todo-app-labs/`
-
-*(Uwaga: w ustawieniach repozytorium na GitHubie w zakładce **Pages** upewnij się, że źródło to gałąź `gh-pages`)*.
-
----
 
 ## 🗂️ Struktura projektu
 
@@ -161,40 +144,4 @@ Zamiast suchej listy — karty z kolorem projektu, ikoną i paskiem postępu daj
 #### 6. Kontrast i dostępność
 Paleta kolorów: tekst `#F9FAFB` na tle `#0A0B10` = kontrast ~18:1 (AAA). Akcent fioletowy `#7C3AED` na ciemnym tle = kontrast ~7.5:1 (AA).
 
-### Odniesienie do Heurystyk Nielsena
-
-| # | Heurystyka | Implementacja |
-|---|---|---|
-| 1 | Widoczność statusu | Loading spinners, Snackbar sukcesu/błędu, Chip "Zapisywanie..." |
-| 4 | Spójność i standardy | MUI Design System, konsekwentna paleta kolorów |
-| 5 | Zapobieganie błędom | Walidacja Zod inline (onBlur), disabled button bez wypełnionego formularza |
-| 6 | Recognition not recall | Ikony w nawigacji, kolory projektów, etykiety priorytetów |
-| 7 | Elastyczność | Filter Bar (Wszystkie / Aktywne / Ukończone), skrót "Rozpocznij teraz" |
-| 9 | Pomoc w diagnozie błędów | Konkretne komunikaty walidacji ("Hasło musi mieć co najmniej 8 znaków") |
-
 ---
-
-## 📊 Spełnione kryteria zaliczenia
-
-| Kryterium | Pkt | Status |
-|---|---|---|
-| Prototypowanie UI (Figma hi-fi) | 6 | ✅ |
-| Implementacja interfejsu (komponenty, routing 5+ ekranów, MUI) | 7 | ✅ |
-| Responsive Design (xs/md breakpoints, Drawer mobile) | 5 | ✅ |
-| Formularze i walidacja (RHF + Zod, inline errors) | 5 | ✅ |
-| Dostępność WCAG (semantic HTML, aria, kontrast, fokus) | 8 | ✅ |
-| State Management (Context API, loading/success/error) | 4 | ✅ |
-| Integracja z API (mock GET/POST/DELETE/PUT, błędy UI) | 5 | ✅ |
-| Mikrointerakcje i animacje (Framer Motion, Snackbar) | 5 | ✅ |
-| Deployment i dokumentacja (README, GitHub) | 5 | ✅ |
-| **Razem** | **50** | ✅ |
-
----
-
-## 📄 Licencja
-
-MIT — projekt edukacyjny
-
----
-
-*Produty v1.0.0 — Patryk Kindra © 2026*
